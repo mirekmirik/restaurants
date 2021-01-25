@@ -1,0 +1,82 @@
+<h1>Ресторан {{restaurants.title}}</h1>
+<div class="type">
+    {{restaurants.type}}
+</div>
+<div class="imgMain">
+    <img src="{{restaurants.img}}" alt="{{restaurants.title}}" width="950">
+</div>
+
+
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#overview" class="active">Обзор</a></li>
+            <li class="tab col s3"><a href="#photos">Фото</a></li>
+            <li class="tab col s3"><a href="#dishes">Блюда</a></li>
+            <li class="tab col s3"><a href="#timework">График работы</a></li>
+        </ul>
+    </div>
+    <div id="overview" class="col s12">
+        <h3 style="padding-bottom: 50px;">Обзор</h3>
+        <div class="contain">
+            <p class="descMain">{{restaurants.desc}}</p>
+        </div>
+    </div>
+    <div id="photos" class="col s12">
+        <h3 style="padding-bottom: 50px;">Фото</h3>
+        {{#if restaurants.img1.length}}
+        <div class="imgRasstoyanie" style="padding-bottom: 100px;">
+            <img src="{{restaurants.img1}}" alt="img" width="300">
+            <img src="{{restaurants.img2}}" alt="img" width="300">
+            <img src="{{restaurants.img3}}" alt="img" width="300">
+            <img src="{{restaurants.img4}}" alt="img" width="300">
+        </div>
+        {{else}}
+        <p>Нет фото</p>
+        {{/if}}
+    </div>
+    <div id="dishes" class="col s12">
+        <h3>Блюда</h3>
+        {{#if restaurants.dishes.length}}
+        <ul>
+            <li>1. {{restaurants.dishes}}</li>
+            <li>2. {{restaurants.dishes1}}</li>
+            <li>3. {{restaurants.dishes2}}</li>
+            <li>4. {{restaurants.dishes3}}</li>
+            <li>5. {{restaurants.dishes4}}</li>
+            <li>6. {{restaurants.dishes5}}</li>
+            <li>7. {{restaurants.dishes6}}</li>
+            <li>8. {{restaurants.dishes7}}</li>
+            <li>9. {{restaurants.dishes8}}</li>
+            <li>10. {{restaurants.dishes9}}</li>
+            <li>11. {{restaurants.dishes10}}</li>
+        </ul>
+    </div>
+    {{else}}
+    <span style="color: rgb(182, 31, 39);">К сожалению найти блюда не удалось</span>
+    {{/if}}
+
+    <div id="timework" class="col s12">
+        {{#if restaurants.timeWorkMonday.length}}
+        <h3>График работы:</h3>
+        <p>Понедельник: {{restaurants.timeWorkMonday}}</p>
+        <p>Вторник: {{restaurants.timeWorkTuesday}}</p>
+        <p>Среда: {{restaurants.timeWorkWednesday}}</p>
+        <p>Четверг: {{restaurants.timeWorkThursday}}</p>
+        <p>Пятница: {{restaurants.timeWorkFriday}}</p>
+        <p>Суббота: {{restaurants.timeWorkSaturday}}</p>
+        <p>Воскресенье: {{restaurants.timeWorkSunday}}</p>
+        {{else}}
+        <p>Нет графика</p>
+        {{/if}}
+    </div>
+</div>
+
+
+<div style="margin-top:100px">
+    <hr>
+</div>
+
+<div class="discussion">
+    <a href="discuss/{{restaurants._id}}">Перейти к обсуждению ({{commentsCounter.length}})</a>
+</div>

@@ -1,0 +1,38 @@
+<div>
+    <h1 style="text-align: center;">Домашняя | Рестораны Каменского</h1>
+</div>
+
+
+
+
+{{#if restaurants.length}}
+<form method="POST" action="/">
+    <div>
+        {{#each restaurants}}
+        <div class="cardRestaurant razmeshenie z-depth-1">
+            <div class="allocation">
+                <img src="{{img}}" alt="{{title}}" width="430" height="400">
+                <p>Название: {{title}}</з>
+                <p>Цены: {{value}}</p>
+
+                <div class="continue">
+                    <a href="/restaurant/{{_id}}">Подробнее...</a>
+                </div>
+                {{!-- кнопки --}}
+                <div class="allocationButtons">
+                    <div class="buttonDelete">
+                        <button type="submit" class="btn bg-dark text-danger" name="id" value="{{_id}}">X</button>
+                    </div>
+                    <div class="buttonEdit">
+                        <a class="btn" href="/editrestaurant/{{_id}}">EDIT</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</form>
+{{else}}
+<p>Ресторанов нет</p>
+{{/if}}

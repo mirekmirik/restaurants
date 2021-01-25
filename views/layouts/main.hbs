@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    {{!--
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300&family=Indie+Flower&display=swap"
+        rel="stylesheet"> --}}
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <div class="backgroundMain">
+        <div class="container1 z-depth-5">
+            {{> navbar}}
+            {{{body}}}
+        </div>
+    </div>
+
+    {{!-- скрипты --}}
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/script.js"></script>
+
+</body>
+
+
+</html>

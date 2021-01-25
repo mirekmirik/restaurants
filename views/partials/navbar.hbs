@@ -1,0 +1,32 @@
+<nav class="nav-wrapper grey">
+    <a href="#" class="brand-logo">Logo</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+        {{#if isHome}}
+        <li class="active"><a href="/">Главная</a></li>
+        {{else}}
+        <li><a href="/">Главная</a></li>
+        {{/if}}
+
+
+        {{!-- {{#if isRestaurants}}
+        <li class="active"><a href="/restaurants">Рестораны</a></li>
+        {{else}}
+        <li><a href="/restaurants">Рестораны</a></li>
+        {{/if}} --}}
+
+
+        {{#if isAbout}}
+        <li class="active"><a href="/about">О нас</a></li>
+        {{else}}
+        <li><a href="/about">О нас</a></li>
+        {{/if}}
+
+        {{#if isAddRestaurant}}
+        <li class="active"><a href="/addRestaurant">Добавить ресторан</a></li>
+        {{else}}
+        <li><a href="/addRestaurant">Добавить ресторан</a></li>
+        {{/if}}
+
+    </ul>
+</nav>

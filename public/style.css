@@ -1,0 +1,166 @@
+
+
+* {
+    margin: 0;
+}
+.backgroundMain {
+    background-image: url('https://images.wallpaperscraft.ru/image/restoran_kafe_pribory_stoly_stulya_interer_dizayn_39216_1920x1080.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 1400px;
+    padding-bottom: 30px;
+}
+
+
+
+
+.container1 {
+    margin: 0 auto;
+    background-color: #757575;
+    width: 1366px;
+    min-height: 1200px;
+    opacity: 0.98;
+    padding-bottom: 30px;
+}
+
+.cardRestaurant {
+    margin-left: 10px;
+    width: 1260px;
+    height: 400px;
+    background-color:grey;
+    margin-top: 30px;
+    transition: 0.3s;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+
+}
+
+.cardRestaurant:hover {
+    transform: scale(1.01)
+}
+
+
+ .allocation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+
+.allocationButtons {
+     display: flex;
+    justify-content: flex-end; 
+    margin-right: 10px;
+    margin-top: 10px;
+    /* margin-left: 600px; */
+}
+
+ .buttonDelete {
+    margin-right: 10px;
+} 
+
+.continue {
+    margin-top: 10px;
+}
+
+.imgMain {
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.imgRasstoyanie {
+    display: flex;
+    justify-content: space-between;
+}
+
+.descMain {
+    font-size: 20px;
+    text-align: center;
+}
+
+.type {
+    color:blanchedalmond;
+    width: 140px;
+    height: 30px;
+    background-color: black;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-family: 'Fraunces', serif;
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Kaushan Script', cursive;
+}
+
+h1 {
+    font-family: 'Fraunces', serif;
+font-family: 'Indie Flower', cursive;
+color: black;
+}
+p {
+    @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Fraunces:wght@300&family=Harmattan&family=Indie+Flower&family=Kaushan+Script&family=Permanent+Marker&family=Shadows+Into+Light&display=swap');
+    font-family: 'Creepster', cursive;
+font-family: 'Fraunces', serif;
+font-family: 'Harmattan', sans-serif;
+font-family: 'Indie Flower', cursive;
+font-family: 'Kaushan Script', cursive;
+font-family: 'Permanent Marker', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-size: 20px;
+color: black;
+}
+
+.contain {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+
+.tabs {
+    background-color: #5d4037;
+    
+}
+
+.tabs .tab a {
+    color: white;
+}
+
+.comments {
+    width: 300px;
+    background-color: grey;
+}
+
+.discussion {
+    /* margin-top: 200px; */
+    text-align: center;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    width: 300px;
+    margin-left: 20px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+
+.discussComments {
+    margin-left: 50px;
+}
+
+.discussComments p {
+    font-size: 15px;
+}
+
+.discSize {
+    border: 2px solid black;
+    margin-top: 15px;
+}
+
+
+hr {
+    background-color: #9e9e9e;
+    height: 1px;
+    border: none;
+}

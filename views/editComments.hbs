@@ -1,0 +1,16 @@
+<h1>Редактировать {{comments.nameComments}}</h1>
+
+
+
+
+<form action="/editcom" method="POST">
+    <div>
+        <p style="margin-bottom: 50px">Введите описание</p>
+        <div class="descComments">
+            <label class="active" for="descComments"></label>
+            <input type="text" name="descComments" id="descComments" value="{{comments.descComments}}">
+        </div>
+        <input type="hidden" value="{{comments._id}}" name="id">
+        <button type="submit" class="btn btn-small">Отредактировать</button>
+    </div>
+</form>

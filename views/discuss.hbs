@@ -1,0 +1,59 @@
+<h1 style="text-align: center;">{{restaurants.title}}</h1>
+
+
+
+
+
+
+
+<form method="POST" action="/discuss/{{restaurants._id}}">
+    <div style="margin-bottom: 50px">
+        <p>Введите ваше имя: </p>
+        <div class="nameComments">
+            <label class="active" for="nameComments"></label>
+            <input type="text" name="nameComments" id="nameComments">
+        </div>
+        <p>Введите описание</p>
+        <div class="descComments">
+            <label class="active" for="descComments"></label>
+            <input type="text" name="descComments" id="descComments">
+        </div>
+        <button type="submit" class="btn btn-small">Опубликовать</button>
+    </div>
+</form>
+
+
+{{#if comments.length}}
+{{!-- <h3>Комментарии:</h3> --}}
+<p>Отзывов ({{commentsCounter.length}})</p>
+{{#each comments}}
+<form action="/editcomments/{{_id}}" method="POST">
+    <div class="discussComments">
+        <div class="discSize">
+            <img src="https://lh3.googleusercontent.com/proxy/SRNbz5wPPdIZPuLdaWeJfX_-ngVLGl0vTPtIiPJqfQMf1LrEtS-lhsa1R46ZZcNkTyThjsWHc-IOHpbl4fMzCoF23yEnHzdU3A"
+                alt="ava" width="80">
+            <p style="font-size: 24px">{{nameComments}}</p>
+            <hr>
+            <p style="margin-left:10px">{{descComments}}</p>
+            <hr>
+            <p style="font-size: 14px; display: flex; justify-content: flex-end">{{Date}}</p>
+            <div class="allocationButtons">
+                <div class="buttonDelete">
+                    <button type="submit" class="btn bg-dark text-danger" name="id" value="{{_id}}">X</button>
+                </div>
+                <div class="buttonEdit">
+                    <a class="btn" href="/editcomments/{{_id}}">EDIT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{{/each}}
+
+{{else}}
+<div style="margin-left: 50px;">
+    <p>Отзывов пока нет!</p>
+    <span>Будьте первыми!</span>
+</div>
+
+{{/if}}
