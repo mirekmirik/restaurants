@@ -1,9 +1,9 @@
 const { Router } = require('express')
 const router = Router()
 const Comments = require('../models/comments')
+const auth = require('../middleware/auth')
 
-
-router.get('/editcomments/:id', async (req, res) => {
+router.get('/editcomments/:id', auth, async (req, res) => {
     const comments = await Comments.findById(req.params.id).lean()
     try {
         res.render('editComments.hbs', {
@@ -18,7 +18,7 @@ router.get('/editcomments/:id', async (req, res) => {
 })
 
 
-router.post('/editcom', async (req, res) => {
+router.post('/editcom', auth, async (req, res) => {
     try {
         await Comments.findByIdAndUpdate(req.body.id, req.body)
         return res.redirect('..')

@@ -1,10 +1,10 @@
 const { Router } = require('express')
 const router = Router()
 const Restaurants = require('../models/restaurant')
+const auth = require('../middleware/auth')
 
 
-
-router.get('/editrestaurant/:id', async (req, res) => {
+router.get('/editrestaurant/:id', auth, async (req, res) => {
     const restaurants = await Restaurants.findById(req.params.id).lean()
     try {
         res.render('editRestaurant', {
@@ -21,7 +21,7 @@ router.get('/editrestaurant/:id', async (req, res) => {
 })
 
 
-router.post('/editrestaurant', async (req, res) => {
+router.post('/editrestaurant', auth, async (req, res) => {
     try {
         await Restaurants.findByIdAndUpdate(req.body.id, req.body)
         res.redirect('/')

@@ -2,8 +2,10 @@ const { Router } = require('express')
 const router = Router()
 const Restaurants = require('../models/restaurant')
 const Comments = require('../models/comments')
+const auth = require('../middleware/auth')
 
-router.get('/addRestaurant', (req, res) => {
+
+router.get('/addRestaurant', auth, (req, res) => {
     try {
         res.render('addRestaurant', {
             title: 'Рестораны | Добавить ресторан',
@@ -17,7 +19,7 @@ router.get('/addRestaurant', (req, res) => {
     }
 })
 
-router.post('/addRestaurant', async (req, res) => {
+router.post('/addRestaurant', auth, async (req, res) => {
     const {
         title, value, img, desc,
         timeWorkMonday, timeWorkTuesday, timeWorkWednesday, timeWorkThursday,

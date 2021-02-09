@@ -1,10 +1,10 @@
 const { Router } = require('express')
 const router = Router()
 const Restaurants = require('../models/restaurant')
+const auth = require('../middleware/auth')
 
 
-
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     try {
         await Restaurants.findByIdAndDelete(req.body.id).then(() => console.log('Restaurant has been deleted'))
         res.status(200)

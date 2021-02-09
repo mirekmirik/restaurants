@@ -5,6 +5,12 @@ const PORT = 3000
 const mongoose = require('mongoose')
 const path = require('path')
 const exhbs = require('express-handlebars')
+const session = require('express-session')
+const MongoStore = require('connect-mongodb-session')(session)
+const varMiddleware = require('./middleware/variables')
+
+
+
 //routes
 const RouteHome = require('./routes/home')
 const RouteRestaurants = require('./routes/restaurants')
@@ -15,6 +21,8 @@ const RouteAbout = require('./routes/about')
 const RouteDeleteComments = require('./routes/deleteComments')
 const RouteDiscuss = require('./routes/discuss')
 const RouteEditComments = require('./routes/editComments')
+const RouteAuth = require('./routes/auth')
+const RouteLogout = require('./routes/logout')
 // app.use(fileupload)
 
 const hbs = exhbs.create({
@@ -22,6 +30,10 @@ const hbs = exhbs.create({
     extname: 'hbs'
 })
 
+const store = new MongoStore({
+ collection: 'sessions',
+ uri: process.env.MONGODB_URI
+})
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
@@ -31,7 +43,14 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use(session({
+    secret: 'some secret value',
+    resave: false,
+    saveUninitialized: false,
+    store
+}))
 
+app.use(varMiddleware)
 
 app.use(RouteHome)
 app.use(RouteRestaurants)
@@ -42,7 +61,8 @@ app.use(RouteAbout)
 app.use(RouteDeleteComments)
 app.use(RouteDiscuss)
 app.use(RouteEditComments)
-
+app.use(RouteAuth)
+app.use(RouteLogout)
 
 async function start() {
     try {

@@ -2,6 +2,7 @@
     <a href="#" class="brand-logo">Logo</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
 
+
         {{#if isHome}}
         <li class="active"><a href="/">Главная</a></li>
         {{else}}
@@ -9,12 +10,8 @@
         {{/if}}
 
 
-        {{!-- {{#if isRestaurants}}
-        <li class="active"><a href="/restaurants">Рестораны</a></li>
-        {{else}}
-        <li><a href="/restaurants">Рестораны</a></li>
-        {{/if}} --}}
-
+       
+{{#if isAuth}}
 
         {{#if isAbout}}
         <li class="active"><a href="/about">О нас</a></li>
@@ -27,6 +24,24 @@
         {{else}}
         <li><a href="/addRestaurant">Добавить ресторан</a></li>
         {{/if}}
+
+         <li><a href="/logout">Выйти</a></li>
+            
+
+{{else}}
+
+{{#if isLogin}}
+<li class="active"><a href="/auth">Войти</a></li>
+{{else}}
+<li><a href="/auth">Войти</a></li>
+
+{{/if}}
+
+{{/if}}
+
+
+
+ 
 
     </ul>
 </nav>

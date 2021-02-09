@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const router = Router()
+const auth = require('../middleware/auth')
 
-
-router.get('/restaurants', (req, res) => {
+router.get('/restaurants', auth, (req, res) => {
     try {
         res.render('restaurants.hbs', {
             title: 'Рестораны | Все рестораны',

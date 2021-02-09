@@ -2,7 +2,9 @@ const { Router } = require('express')
 const router = Router()
 const Restaurants = require('../models/restaurant')
 const Comments = require('../models/comments')
-router.get('/', async (req, res) => {
+const auth = require('../middleware/auth')
+
+router.get('/',  async (req, res) => {
     const restaurants = await Restaurants.find().sort({ title: 1 }).lean()
     res.render('home.hbs', {
         title: 'Рестораны Каменское',
@@ -11,7 +13,7 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.get('/restaurant/:id', async (req, res) => {
+router.get('/restaurant/:id', auth, async (req, res) => {
     const restaurants = await Restaurants.findById(req.params.id).lean()
 
     const comments = await Comments.find({ _restaurantsId: req.params.id }).sort({ Date: -1 }).lean()

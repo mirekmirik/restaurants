@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#login">Вход</a></li>
+        <li class="tab col s3"><a  href="#register">Регистрация</a></li>
+      </ul>
+    </div>
+    {{!-- Вход --}}
+
+    <form method="POST" action="/login">
+    <div id="login" class="col s12 auth">
+      <h3>Войти</h3>
+          <div class="row">
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="password" type="password" class="validate" name="password">
+          <label for="password">Пароль</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="email" type="email" class="validate" name="email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-small">Войти</button>
+    </form>
+  </div>
+    </div>
+
+    {{!-- Регистрация --}}
+    <div id="register" class="col s12 auth">
+      <form method="POST" action="/register">
+      <h3>Регистрация</h3>
+          <div class="row">
+        <div class="input-field col s6">
+          <input id="username" type="text" class="validate" name="username">
+          <label for="username">Имя</label>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="rpassword" type="password" class="validate" name="rpassword">
+          <label for="rpassword">Пароль</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="remail" type="email" class="validate" name="remail">
+          <label for="remail">Email</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-small">зарегистрироваться</button>
+    </form>
+  </div>
+    </div>
+  </div>

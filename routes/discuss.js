@@ -2,18 +2,12 @@ const { Router } = require('express')
 const router = Router()
 const Restaurants = require('../models/restaurant')
 const Comments = require('../models/comments')
+const auth = require('../middleware/auth')
 
 
 
-// async function podschet(req, res, next) {
-//     const mm = []
-//     const comments = await Comments.findOne({ _restaurantsId: req.params.id })
-//     comments.push(mm)
-//     console.log(mm)
-// }
-// podschet()
 
-router.get('/restaurant/discuss/:id', async (req, res) => {
+router.get('/restaurant/discuss/:id', auth, async (req, res) => {
     const restaurants = await Restaurants.findById(req.params.id).lean()
     const comments = await Comments.find({ _restaurantsId: req.params.id }).sort({ Date: -1 }).lean()
 
@@ -35,7 +29,7 @@ router.get('/restaurant/discuss/:id', async (req, res) => {
     }
 })
 
-router.post('/discuss/:id', async (req, res) => {
+router.post('/discuss/:id', auth, async (req, res) => {
     const restaurants = await Restaurants.findById(req.params.id).lean()
     const comments = new Comments({
         nameComments: req.body.nameComments,

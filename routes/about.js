@@ -13,7 +13,6 @@ router.get('/about', (req, res) => {
             "error": "something went wrong"
         })
     }
-
 })
 
 module.exports = router

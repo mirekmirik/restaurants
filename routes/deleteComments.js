@@ -1,11 +1,11 @@
 const { Router } = require('express')
 const router = Router()
 const Comments = require('../models/comments')
+const auth = require('../middleware/auth')
 
 
 
-
-router.post('/editcomments/:id', async (req, res) => {
+router.post('/editcomments/:id', auth, async (req, res) => {
     try {
         await Comments.findByIdAndDelete(req.body.id).then(() => console.log('Has been deleted'))
         res.redirect('back')
