@@ -1,8 +1,17 @@
+require("dotenv").config();
 const { Router } = require("express");
 const router = Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
+const sendgrid = require("nodemailer-sendgrid-transport");
+const regEmail = require("../email/registration");
 
+const transporter = nodemailer.createTransport(
+  sendgrid({
+    auth: { api_key: process.env.SENDGRID_API_KEY },
+  })
+);
 
 router.get("/auth", (req, res) => {
   res.render("auth", {
@@ -20,13 +29,13 @@ router.post("/login", async (req, res) => {
       if (areSame) {
         const user = candidate;
         req.session.user = user;
-         req.session.isAuthenticated = true;
-         req.session.save((err) => {
-           if (err) {
-             throw err;
-           }
-           res.redirect("/");
-         })
+        req.session.isAuthenticated = true;
+        req.session.save((err) => {
+          if (err) {
+            throw err;
+          }
+          res.redirect("/");
+        });
       } else {
         res.json({ message: "Неверный пароль" });
       }
@@ -59,12 +68,21 @@ router.post("/register", async (req, res) => {
       email,
     });
     await user.save(() => console.log("saved to database"));
-    res.redirect('/auth')
+    res.redirect("/auth");
+    await transporter.sendMail(regEmail(email, username));
 
     console.log(user);
   } catch (e) {
     console.log(e);
   }
 });
+
+router.get("/auth/reset", (req, res) => {
+  res.render("reset.hbs", {
+    title: "Забыли пароль?",
+  });
+});
+
+router.post("/auth/reset", async (req, res) => {});
 
 module.exports = router;

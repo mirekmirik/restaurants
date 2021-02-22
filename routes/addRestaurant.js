@@ -20,43 +20,9 @@ router.get('/addRestaurant', auth, (req, res) => {
 })
 
 router.post('/addRestaurant', auth, async (req, res) => {
-    const {
-        title, value, img, desc,
-        timeWorkMonday, timeWorkTuesday, timeWorkWednesday, timeWorkThursday,
-        timeWorkFriday, timeWorkSaturday, timeWorkSunday,
-        dishes, dishes1, dishes2, dishes3, dishes4,
-        dishes5, dishes6, dishes7, dishes8, dishes9, dishes10,
-        img1, img2, img3, img4,
-        type
-    } = req.body
+    const {title, value, ...rest} = req.body
     const restaurants = new Restaurants({
-        title,
-        value,
-        img,
-        desc,
-        timeWorkMonday,
-        timeWorkTuesday,
-        timeWorkWednesday,
-        timeWorkThursday,
-        timeWorkFriday,
-        timeWorkSaturday,
-        timeWorkSunday,
-        dishes,
-        dishes1,
-        dishes2,
-        dishes3,
-        dishes4,
-        dishes5,
-        dishes6,
-        dishes7,
-        dishes8,
-        dishes9,
-        dishes10,
-        img1,
-        img2,
-        img3,
-        img4,
-        type,
+       title, value, ...rest
     })
     try {
         await restaurants.save().then(() => console.log('Ресторан успешно добавлен'))
